@@ -1,0 +1,152 @@
+/* Base */
+* { box-sizing: border-box; }
+:root{
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --shadow: 0 10px 30px rgba(17,24,39,0.08);
+  --radius: 18px;
+  --btn-dark: #0b0b0c;
+}
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.page{
+  width: min(560px, 92%);
+  margin: 24px auto 36px;
+}
+
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px 18px;
+}
+
+/* Perfil */
+.profile{
+  text-align: center;
+  padding-bottom: 14px;
+}
+
+.logo-round{
+   width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 999px;
+}
+
+.name{
+  margin: 12px 0 6px;
+  font-size: 1.3rem;
+}
+
+.tagline{
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Lista de links */
+.link-list{
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.link{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 14px 14px;
+  border: 1px solid transparent;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.link-dark{
+  background: var(--btn-dark);
+  color: #fff;
+}
+
+.link:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  opacity: 0.96;
+}
+
+.icon{
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  font-size: 18px;
+  flex: 0 0 34px;
+}
+
+.link-title{
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* Íconos mini (opcional) */
+.mini-icons{
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.mini-icons a{
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: 0 6px 18px rgba(17,24,39,0.06);
+}
+
+.mini-icons a:hover{
+  transform: translateY(-1px);
+}
+
+.hero{
+  text-align: center;
+  padding: 24px 16px 8px;
+}
+
+.logo-hero{
+  width: clamp(140px, 40vw, 220px);
+  height: clamp(140px, 40vw, 220px);
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 2px;
+}
+
+.brand{
+  margin: 6px 0 4px;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+}
+
+.tagline{
+  margin: 0;
+  color: #555;
+}

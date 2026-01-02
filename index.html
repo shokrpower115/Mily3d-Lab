@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mily3DLab</title>
+  <meta name="description" content="Conoce quiénes somos, lo que ofrecemos y encuentra nuestras redes sociales." />
+
+  <meta property="og:title" content="Mily3DLab" />
+  <meta property="og:description" content="Quiénes somos, lo que ofrecemos y nuestras redes." />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <div class="page">
+
+    <main class="card">
+    <section class="profile" aria-label="Perfil">
+        <img class="logo-hero" src="assets/img/foto_perfil.png" alt="Logo de Tu Empresa" />
+        <h1 class="name">Mily3D-Lab</h1>
+        <p class="tagline">"Todo se puede crear con la imaginacion correcta"</p>
+    </section>
+
+    <section aria-label="Redes sociales">
+        <ul class="link-list" role="list">
+        <li>
+            <a class="link link-dark" href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener noreferrer">
+            <span class="icon" aria-hidden="true">📲</span>
+            <span class="link-title">WhatsApp</span>
+            </a>
+        </li>
+
+        <li>
+            <a class="link link-dark" href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer">
+            <span class="icon" aria-hidden="true">📷</span>
+            <span class="link-title">Instagram</span>
+            </a>
+        </li>
+
+        <li>
+            <a class="link link-dark" href="https://facebook.com/tuusuario" target="_blank" rel="noopener noreferrer">
+            <span class="icon" aria-hidden="true">📘</span>
+            <span class="link-title">Facebook</span>
+            </a>
+        </li>
+
+        <li>
+            <a class="link link-dark" href="mailto:tuemail@correo.com">
+            <span class="icon" aria-hidden="true">✉️</span>
+            <span class="link-title">Contacto por correo</span>
+            </a>
+        </li>
+        </ul>
+    </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-card">
+        <small class="rights">© <span id="year"></span> Miny3DLab. Todos los derechos reservados.</small>
+        <a class="mail" href="mailto:tuemail@correo.com">Contacto por correo</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
