@@ -1,18 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getFirestore, doc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { db } from "../js/firebase-config.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAHd-Sy6sBD9sdRjqTE_EaE0SfG3cmX8Kw",
-  authDomain: "nfc-info.firebaseapp.com",
-  projectId: "nfc-info",
-  storageBucket: "nfc-info.firebasestorage.app",
-  messagingSenderId: "594217896934",
-  appId: "1:594217896934:web:2ed80b2ad7b01010842427",
-  measurementId: "G-W06B6KQZRF"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 // 📌 Obtener ID
 const params = new URLSearchParams(window.location.search);

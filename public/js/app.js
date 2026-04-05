@@ -1,22 +1,5 @@
-// 🔥 IMPORTACIONES FIREBASE
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
-
-// 🔑 CONFIG FIREBASE (REEMPLAZA CON LA TUYA)
-const firebaseConfig = {
-  apiKey: "AIzaSyAHd-Sy6sBD9sdRjqTE_EaE0SfG3cmX8Kw",
-  authDomain: "nfc-info.firebaseapp.com",
-  projectId: "nfc-info",
-  storageBucket: "nfc-info.firebasestorage.app",
-  messagingSenderId: "594217896934",
-  appId: "1:594217896934:web:2ed80b2ad7b01010842427",
-  measurementId: "G-W06B6KQZRF"
-};
-
-// 🚀 INICIALIZAR
-const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
-const db = getFirestore(app);
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { db } from "../js/firebase-config.js";
 
 // 📌 OBTENER ID DE LA URL
 const params = new URLSearchParams(window.location.search);
@@ -28,6 +11,7 @@ if (!id) {
 }
 
 console.log("ID:", id);
+console.log(db);
 
 // 🔍 FUNCIÓN PRINCIPAL
 async function iniciar() {
@@ -36,10 +20,10 @@ async function iniciar() {
     const tagSnap = await getDoc(tagRef);
 
     // ❌ TAG NO EXISTE
-  if (!tagSnap.exists()) {
-  window.location.href = `/register.html?id=${id}`;
-  return;
-}
+    if (!tagSnap.exists()) {
+    window.location.href = `/register.html?id=${id}`;
+    return;
+    }
 
     const tagData = tagSnap.data();
 
@@ -63,9 +47,6 @@ async function cargarMascota(id) {
   const petRef = doc(db, "pets", id);
   const petSnap = await getDoc(petRef);
 
-  console.log("petSnap:", petSnap.exists());
-  console.log("Entró a cargarMascota con ID:", id);
-
   if (!petSnap.exists()) {
     mostrarError("Mascota no encontrada");
     return;
@@ -73,31 +54,32 @@ async function cargarMascota(id) {
 
   const pet = petSnap.data();
 
-  document.getElementById("extra").innerText = pet.extra || "Sin información";
+  // Llenar datos
   document.getElementById("petName").innerText = pet.petName;
-  document.getElementById("ownerName").innerText = "Dueño: " + pet.ownerName;
-  document.getElementById("phone").innerText = "Tel: " + pet.phone;
+  document.getElementById("ownerName").innerText = pet.ownerName;
+  document.getElementById("phone").innerText = pet.phone;
+  document.getElementById("extra").innerText = pet.extra || "Sin información adicional";
 
-  const photo = document.getElementById("petPhoto");
-  const icon = document.getElementById("petIcon");
-
-  if (pet.photoURL && pet.photoURL !== "") {
-    photo.src = pet.photoURL;
-    photo.style.display = "block";
-    icon.style.display = "none";
+  if (pet.photoURL) {
+    document.getElementById("petPhoto").src = pet.photoURL;
+    document.getElementById("petPhoto").style.display = "block";
+    document.getElementById("petIcon").style.display = "none";
   }
 
-  //   document.getElementById("whatsappBtn").onclick = () => {
-  //   const mensaje = encodeURIComponent("Hola, encontré tu mascota 🐶");
-  //   window.open(`https://wa.me/52${pet.phone}?text=${mensaje}`, "_blank");
-  // };
-
-  const callBtn = document.getElementById("callBtn");
-  callBtn.onclick = () => {
+  document.getElementById("callBtn").onclick = () => {
     window.location.href = `tel:${pet.phone}`;
   };
 
-  
+  document.getElementById("whatsappBtn").onclick = () => {
+    const mensaje = encodeURIComponent("Hola, encontré a tu mascota 🐾");
+    window.open(`https://wa.me/52${pet.phone}?text=${mensaje}`, "_blank");
+  };
+
+  // ✅ Ocultar skeleton y mostrar card con animación
+  document.getElementById("skeleton").style.display = "none";
+  const card = document.getElementById("petCard");
+  card.style.display = "block";
+  requestAnimationFrame(() => card.classList.add("visible"));
 }
 
 // ❌ MOSTRAR ERROR BONITO
